@@ -838,7 +838,7 @@ function buildWorld(THREE){
     const sh = new THREE.Group(); sh.position.set(x, 1.7, 0); rider.add(sh);
     part(sh, RB(.8, 1.6, .8, .2), hoodM, 0, -.75, 0);
     part(sh, RB(.72, .45, .72, .2), skinM, 0, -1.68, 0);
-    sh.rotation.x = -1.05; sh.rotation.z = i ? .22 : -.22;
+    sh.rotation.x = .9; sh.rotation.z = i ? -.28 : .28; // reach forward and in to the wheel
     return sh;
   });
   const armL = arms[0], armR = arms[1];
@@ -878,7 +878,7 @@ function buildWorld(THREE){
     // idle wave after two seconds parked
     idle = sp < .5 ? idle + dt : 0;
     const wave = Math.min(1, Math.max(0, idle - 2));
-    armR.rotation.x = -1.05 * (1 - wave) + wave * -2.9; armR.rotation.z = .22 + wave * (.5 + Math.sin(t * 9) * .35);
+    armR.rotation.x = .9 * (1 - wave) + wave * 2.9; armR.rotation.z = -.28 * (1 - wave) - wave * (.45 + Math.sin(t * 9) * .35);
     pipes.forEach((p, i) => p.position.y = 1.2 + Math.sin(t * 40 + i) * .015 * (sp > .5 ? 1 : .4));
   }
 
